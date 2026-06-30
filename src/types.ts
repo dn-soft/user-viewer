@@ -1,8 +1,12 @@
 export type Stone = 'listen' | 'read' | 'write' | 'speak'
 
+export type UserRole = 'student' | 'teacher' | 'unknown'
+
 export interface UserSummary {
   id: string
   name?: string
+  role: UserRole
+  schoolLevel?: string
   schoolName?: string
   grade?: number
   classNum?: number
@@ -18,6 +22,7 @@ export interface Currencies {
   speakStone: number
   gold: number
   bookCoin: number
+  arcadeTicket: number
 }
 
 // 백엔드가 보내는 슬롯이 head/face/top/bottom 외에도 hair/hand/back/set/skin/emotion/sky 등이 있어
@@ -57,17 +62,11 @@ export interface MissionItem {
   goal?: number
 }
 
-export interface MissionBundle {
-  daily: MissionItem[]
-  weekly: MissionItem[]
-  teacher: MissionItem[]
-}
-
 export interface UserDetail {
   summary: UserSummary
   currencies: Currencies
   equipped: EquippedItem[]
   inventory: InventoryItem[]
   achievements: Achievement[]
-  missions: MissionBundle
+  missions: MissionItem[]
 }

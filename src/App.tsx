@@ -54,7 +54,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <span className="text-2xl">🔍</span>
               <div>
-                <h1 className="text-lg font-bold text-slate-900">알공3 · 유저 뷰어</h1>
+                <h1 className="text-lg font-bold text-slate-900">알공4 · 유저 뷰어</h1>
                 <p className="text-xs text-slate-500">
                   유저 ID로 재화 / 아이템 / 업적 / 미션을 조회합니다
                 </p>
@@ -88,7 +88,7 @@ export default function App() {
             <div className="text-5xl">👤</div>
             <p className="mt-3 text-base font-medium text-slate-700">유저 ID를 검색해 주세요</p>
             <p className="mt-1 text-sm text-slate-500">
-              {apiOn ? '실제 알공3 계정 ID를 입력하세요' : '샘플 칩을 눌러보세요 (mock 모드)'}
+              {apiOn ? '실제 알공4 계정 ID를 입력하세요' : '샘플 칩을 눌러보세요 (mock 모드)'}
             </p>
           </div>
         )}

@@ -5,6 +5,8 @@ const users: Record<string, UserDetail> = {
     summary: {
       id: 'ax1234',
       name: '김민준',
+      role: 'student',
+      schoolLevel: 'student',
       schoolName: '서울초등학교',
       grade: 5,
       classNum: 3,
@@ -18,6 +20,7 @@ const users: Record<string, UserDetail> = {
       speakStone: 51,
       gold: 12450,
       bookCoin: 320,
+      arcadeTicket: 8,
     },
     equipped: [
       { slot: 'head', name: '마법사 모자' },
@@ -75,42 +78,18 @@ const users: Record<string, UserDetail> = {
         goal: 50,
       },
     ],
-    missions: {
-      daily: [
-        { id: 'dm1', title: '오늘의 단어 5개 학습', done: true, progress: 5, goal: 5, reward: '듣기돌 ×10' },
-        { id: 'dm2', title: '읽기 미션 1회 통과', done: true, progress: 1, goal: 1, reward: '읽기돌 ×10' },
-        { id: 'dm3', title: '말하기 챌린지 3회', done: false, progress: 1, goal: 3, reward: '말하기돌 ×15' },
-      ],
-      weekly: [
-        { id: 'wm1', title: '한 주 동안 단어 30개', done: false, progress: 18, goal: 30, reward: '골드 ×500' },
-        { id: 'wm2', title: '도서관 책 2권 완독', done: false, progress: 1, goal: 2, reward: '북코인 ×50' },
-        { id: 'wm3', title: '미션 10개 클리어', done: true, progress: 10, goal: 10, reward: '골드 ×300' },
-      ],
-      teacher: [
-        {
-          id: 'tm1',
-          title: '5학년 3단원: 음식 단어 외우기',
-          description: '담임 선생님이 발급한 미션',
-          done: false,
-          progress: 12,
-          goal: 20,
-          reward: '쓰기돌 ×20',
-        },
-        {
-          id: 'tm2',
-          title: '5학년 3단원: 발음 연습',
-          done: true,
-          progress: 5,
-          goal: 5,
-          reward: '말하기돌 ×20',
-        },
-      ],
-    },
+    missions: [
+      { id: 'dm1', title: '오늘의 단어 5개 학습', done: true, progress: 5, goal: 5, reward: '듣기돌 ×10' },
+      { id: 'dm2', title: '읽기 미션 1회 통과', done: true, progress: 1, goal: 1, reward: '읽기돌 ×10' },
+      { id: 'dm3', title: '말하기 챌린지 3회', done: false, progress: 1, goal: 3, reward: '말하기돌 ×15' },
+    ],
   },
   bx7777: {
     summary: {
       id: 'bx7777',
       name: '이서연',
+      role: 'teacher',
+      schoolLevel: 'teacher',
       schoolName: '부산초등학교',
       grade: 4,
       classNum: 2,
@@ -124,6 +103,7 @@ const users: Record<string, UserDetail> = {
       speakStone: 17,
       gold: 2800,
       bookCoin: 65,
+      arcadeTicket: 2,
     },
     equipped: [
       { slot: 'head', name: '리본' },
@@ -151,16 +131,10 @@ const users: Record<string, UserDetail> = {
         goal: 100,
       },
     ],
-    missions: {
-      daily: [
-        { id: 'dm1', title: '오늘의 단어 5개 학습', done: false, progress: 2, goal: 5, reward: '듣기돌 ×10' },
-        { id: 'dm2', title: '읽기 미션 1회 통과', done: false, progress: 0, goal: 1, reward: '읽기돌 ×10' },
-      ],
-      weekly: [
-        { id: 'wm1', title: '한 주 동안 단어 30개', done: false, progress: 6, goal: 30, reward: '골드 ×500' },
-      ],
-      teacher: [],
-    },
+    missions: [
+      { id: 'dm1', title: '오늘의 단어 5개 학습', done: false, progress: 2, goal: 5, reward: '듣기돌 ×10' },
+      { id: 'dm2', title: '읽기 미션 1회 통과', done: false, progress: 0, goal: 1, reward: '읽기돌 ×10' },
+    ],
   },
 }
 

@@ -14,6 +14,7 @@ interface ServerCurrency {
   speakStone: number
   gold: number
   bookCoin: number
+  arcadeTicket: number
 }
 
 interface ServerEquipped {
@@ -55,6 +56,8 @@ interface ServerUserDetail {
   summary: {
     id: string
     name: string | null
+    role: 'student' | 'teacher' | 'unknown'
+    schoolLevel: string | null
     schoolName: string | null
     grade: number | null
     classNum: number | null
@@ -66,11 +69,7 @@ interface ServerUserDetail {
   equipped: ServerEquipped[]
   inventory: ServerInventory[]
   achievements: ServerAchievement[]
-  missions: {
-    daily: ServerMission[]
-    weekly: ServerMission[]
-    teacher: ServerMission[]
-  }
+  missions: ServerMission[]
 }
 
 const BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/$/, '')
@@ -128,6 +127,8 @@ function mapUserDetail(s: ServerUserDetail): UserDetail {
     summary: {
       id: s.summary.id,
       name: s.summary.name ?? undefined,
+      role: s.summary.role ?? 'unknown',
+      schoolLevel: s.summary.schoolLevel ?? undefined,
       schoolName: s.summary.schoolName ?? undefined,
       grade: s.summary.grade ?? undefined,
       classNum: s.summary.classNum ?? undefined,
@@ -135,15 +136,19 @@ function mapUserDetail(s: ServerUserDetail): UserDetail {
       lastLogin: s.summary.lastLogin ?? undefined,
       loginDaysCount: s.summary.loginDaysCount ?? undefined,
     },
-    currencies: s.currencies,
+    currencies: {
+      listenStone: s.currencies.listenStone ?? 0,
+      readStone: s.currencies.readStone ?? 0,
+      writeStone: s.currencies.writeStone ?? 0,
+      speakStone: s.currencies.speakStone ?? 0,
+      gold: s.currencies.gold ?? 0,
+      bookCoin: s.currencies.bookCoin ?? 0,
+      arcadeTicket: s.currencies.arcadeTicket ?? 0,
+    },
     equipped: mapEquipped(s.equipped),
     inventory: mapInventory(s.inventory),
     achievements: mapAchievements(s.achievements),
-    missions: {
-      daily: mapMissions(s.missions.daily),
-      weekly: mapMissions(s.missions.weekly),
-      teacher: mapMissions(s.missions.teacher),
-    },
+    missions: mapMissions(s.missions ?? []),
   }
 }
 

@@ -5,43 +5,37 @@ interface Props {
   data: Currencies
 }
 
-const stoneRows: Array<{
+interface Row {
   key: keyof Currencies
-  label: string
   color: string
   emoji: string
-}> = [
-  { key: 'listenStone', label: '듣기돌', color: 'bg-argong-listen', emoji: '👂' },
-  { key: 'readStone', label: '읽기돌', color: 'bg-argong-read', emoji: '📖' },
-  { key: 'writeStone', label: '쓰기돌', color: 'bg-argong-write', emoji: '✍️' },
-  { key: 'speakStone', label: '말하기돌', color: 'bg-argong-speak', emoji: '🗣️' },
-]
+}
 
-const goldRows: Array<{
-  key: keyof Currencies
-  label: string
-  color: string
-  emoji: string
-}> = [
-  { key: 'gold', label: '골드', color: 'bg-argong-gold', emoji: '🪙' },
-  { key: 'bookCoin', label: '북코인', color: 'bg-argong-book', emoji: '📚' },
+const rows: Row[] = [
+  { key: 'listenStone', color: 'bg-argong-listen', emoji: '👂' },
+  { key: 'readStone', color: 'bg-argong-read', emoji: '📖' },
+  { key: 'writeStone', color: 'bg-argong-write', emoji: '✍️' },
+  { key: 'speakStone', color: 'bg-argong-speak', emoji: '🗣️' },
+  { key: 'gold', color: 'bg-argong-gold', emoji: '🪙' },
+  { key: 'bookCoin', color: 'bg-argong-book', emoji: '📚' },
+  { key: 'arcadeTicket', color: 'bg-pink-500', emoji: '🎟️' },
 ]
 
 function formatNumber(n: number) {
   return n.toLocaleString('ko-KR')
 }
 
-function Row({ label, emoji, color, value }: { label: string; emoji: string; color: string; value: number }) {
+function RowItem({ row, value }: { row: Row; value: number }) {
   return (
     <div className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2.5">
-      <div className="flex items-center gap-2.5">
+      <div className="flex min-w-0 items-center gap-2.5">
         <span
-          className={`flex h-8 w-8 items-center justify-center rounded-full text-white ${color}`}
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white ${row.color}`}
           aria-hidden
         >
-          {emoji}
+          {row.emoji}
         </span>
-        <span className="text-sm font-medium text-slate-700">{label}</span>
+        <span className="font-mono text-sm font-medium text-slate-800">{row.key}</span>
       </div>
       <span className="font-mono text-base font-bold text-slate-900">{formatNumber(value)}</span>
     </div>
@@ -52,12 +46,8 @@ export default function CurrencyPanel({ data }: Props) {
   return (
     <PanelCard title="보유 재화" icon={<span>💎</span>}>
       <div className="grid grid-cols-1 gap-2">
-        {stoneRows.map((row) => (
-          <Row key={row.key} label={row.label} emoji={row.emoji} color={row.color} value={data[row.key]} />
-        ))}
-        <div className="my-1 border-t border-dashed border-slate-200" />
-        {goldRows.map((row) => (
-          <Row key={row.key} label={row.label} emoji={row.emoji} color={row.color} value={data[row.key]} />
+        {rows.map((row) => (
+          <RowItem key={row.key} row={row} value={data[row.key]} />
         ))}
       </div>
     </PanelCard>
