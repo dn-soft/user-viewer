@@ -19,14 +19,14 @@ const users: Record<string, UserDetail> = {
       gold: 12450,
       bookCoin: 320,
     },
-    equipped: {
-      head: '마법사 모자',
-      face: '동그란 안경',
-      top: '하늘색 후드',
-      bottom: '청바지',
-      shoes: '운동화',
-      background: '도서관',
-    },
+    equipped: [
+      { slot: 'head', name: '마법사 모자' },
+      { slot: 'face', name: '동그란 안경' },
+      { slot: 'top', name: '하늘색 후드' },
+      { slot: 'bottom', name: '청바지' },
+      { slot: 'shoes', name: '운동화' },
+      { slot: 'background', name: '도서관' },
+    ],
     inventory: [
       { id: 'h001', name: '마법사 모자', slot: 'head', rarity: 'rare' },
       { id: 'h002', name: '왕관', slot: 'head', rarity: 'legendary' },
@@ -125,11 +125,11 @@ const users: Record<string, UserDetail> = {
       gold: 2800,
       bookCoin: 65,
     },
-    equipped: {
-      head: '리본',
-      top: '하얀 티셔츠',
-      bottom: '체크 스커트',
-    },
+    equipped: [
+      { slot: 'head', name: '리본' },
+      { slot: 'top', name: '하얀 티셔츠' },
+      { slot: 'bottom', name: '체크 스커트' },
+    ],
     inventory: [
       { id: 'h010', name: '리본', slot: 'head', rarity: 'common' },
       { id: 'h011', name: '꽃 머리띠', slot: 'head', rarity: 'rare' },

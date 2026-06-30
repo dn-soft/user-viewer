@@ -4,9 +4,10 @@ import { listUserIds } from '../mocks/users'
 interface Props {
   onSearch: (query: string) => void
   initial?: string
+  showSamples?: boolean
 }
 
-export default function SearchBar({ onSearch, initial = '' }: Props) {
+export default function SearchBar({ onSearch, initial = '', showSamples = true }: Props) {
   const [value, setValue] = useState(initial)
   const samples = listUserIds()
 
@@ -39,19 +40,21 @@ export default function SearchBar({ onSearch, initial = '' }: Props) {
           검색
         </button>
       </form>
-      <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-        <span>샘플:</span>
-        {samples.map((id) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => submit(id)}
-            className="rounded-full bg-slate-200 px-2.5 py-1 font-mono text-slate-700 transition hover:bg-slate-300"
-          >
-            {id}
-          </button>
-        ))}
-      </div>
+      {showSamples && (
+        <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+          <span>샘플:</span>
+          {samples.map((id) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => submit(id)}
+              className="rounded-full bg-slate-200 px-2.5 py-1 font-mono text-slate-700 transition hover:bg-slate-300"
+            >
+              {id}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

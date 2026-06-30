@@ -8,6 +8,7 @@ export interface UserSummary {
   classNum?: number
   attendanceNumber?: number
   lastLogin?: string
+  loginDaysCount?: number
 }
 
 export interface Currencies {
@@ -19,21 +20,21 @@ export interface Currencies {
   bookCoin: number
 }
 
-export type ItemSlot = 'head' | 'face' | 'top' | 'bottom' | 'shoes' | 'background'
+// 백엔드가 보내는 슬롯이 head/face/top/bottom 외에도 hair/hand/back/set/skin/emotion/sky 등이 있어
+// 문자열로 열어둔다. ItemPanel은 SLOT_LABELS 매핑이 있으면 한글 라벨, 없으면 slot 자체를 표시.
+export type ItemSlot = string
 
-export interface EquippedItems {
-  head?: string
-  face?: string
-  top?: string
-  bottom?: string
-  shoes?: string
-  background?: string
+export interface EquippedItem {
+  slot: ItemSlot
+  itemId?: number
+  name: string
 }
 
 export interface InventoryItem {
   id: string
   name: string
   slot: ItemSlot
+  itemId?: number
   rarity?: 'common' | 'rare' | 'epic' | 'legendary'
 }
 
@@ -65,7 +66,7 @@ export interface MissionBundle {
 export interface UserDetail {
   summary: UserSummary
   currencies: Currencies
-  equipped: EquippedItems
+  equipped: EquippedItem[]
   inventory: InventoryItem[]
   achievements: Achievement[]
   missions: MissionBundle
